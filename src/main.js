@@ -1,11 +1,11 @@
-import React from "react";
-import ReactDom from "react-dom";
-import { Button } from "antd";
+import React from 'react';
+import ReactDom from 'react-dom';
+import { Button } from 'antd';
 
-import "amfe-flexible";
+import 'amfe-flexible';
 // 样式
-import "antd/dist/antd.less";
-import "./main.less";
+import 'antd/dist/antd.less';
+import './main.less';
 
 const App = () => {
   return (
@@ -22,4 +22,4 @@ const App = () => {
   );
 };
 
-ReactDom.render(<App></App>, document.getElementById("root"));
+ReactDom.render(<App></App>, document.getElementById('root'));
