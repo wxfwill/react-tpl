@@ -1,0 +1,7 @@
+build
+dist/*
+dist/css
+node_modules
+public
+src/assets
+src/icons
