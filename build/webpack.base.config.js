@@ -9,6 +9,12 @@ module.exports = {
     filename: 'app.[contenthash].js',
     path: path.resolve(process.cwd(), 'dist'),
   },
+  resolve: {
+    alias: {
+      '@': path.resolve('src'),
+    },
+    extensions: ['.ts', '.tsx', '.js', '.json'],
+  },
   module: {
     rules: [
       {
