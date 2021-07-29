@@ -1,4 +1,4 @@
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+// const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
@@ -7,10 +7,15 @@ const WebpackBar = require('webpackbar');
 
 module.exports = {
   mode: 'production',
+  output: {
+    clean: true, // 清除打包产物
+  },
   module: {
     rules: [
       {
         test: /\.css$/,
+        // 采用css modules的解析方式时，排除对node_modules文件处理
+        exclude: [/node_modules/],
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
@@ -18,9 +23,25 @@ module.exports = {
               publicPath: '../',
             },
           },
-          'css-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              // importLoaders: 1,
+              modules: {
+                mode: 'local',
+                localIdentName: '[name]__[local]__[hash:base64:5]',
+              },
+            },
+          },
           'postcss-loader',
         ],
+      },
+      // 解决使用css modules时antd样式不生效
+      {
+        test: /\.css$/,
+        // 排除业务模块，其他模块都不采用css modules方式解析
+        exclude: [/src/],
+        use: ['style-loader', { loader: 'css-loader', options: { importLoaders: 1 } }],
       },
       {
         test: /\.less$/,
@@ -31,7 +52,16 @@ module.exports = {
               publicPath: '../',
             },
           },
-          'css-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 2,
+              modules: {
+                mode: 'local',
+                localIdentName: '[name]__[local]__[hash:base64:5]',
+              },
+            },
+          },
           'postcss-loader',
           //   "less-loader",
           { loader: 'less-loader', options: { lessOptions: { javascriptEnabled: true } } },
@@ -80,7 +110,7 @@ module.exports = {
     },
   },
   plugins: [
-    new CleanWebpackPlugin(),
+    // new CleanWebpackPlugin(),
     // 添加进度条
     new WebpackBar({ profile: true }),
     new HtmlWebpackPlugin({

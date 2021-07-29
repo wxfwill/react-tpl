@@ -1,15 +1,26 @@
 .wrap {
   padding: 20px;
-  .test {
-    color: hotpink;
-    font-size: 14px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    > span {
-      flex: 1;
-      text-align: center;
-      display: inline-block;
+  :global {
+    .test {
+      color: hotpink;
+      font-size: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      > span {
+        flex: 1;
+        text-align: center;
+        display: inline-block;
+      }
+    }
+    .img {
+      width: 30px;
+    }
+    .bg-img {
+      width: 200px;
+      height: 200px;
+      background: url('@/assets/img/logo.png') left top no-repeat;
+      background-size: cover;
     }
   }
 }

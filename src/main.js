@@ -4,20 +4,24 @@ import { Button } from 'antd';
 
 import 'amfe-flexible';
 // 样式
-import 'antd/dist/antd.less';
-import './main.less';
+import 'antd/dist/antd.css';
+import styles from './main.less';
+
+import loginPic from '@/assets/img/logo.png';
 
 const App = () => {
   return (
-    <div className="wrap">
+    <div className={styles.wrap}>
       <p className="test">
-        <span>测试</span>
+        <span>测试6</span>
         <span>前端</span>
         <span>后端</span>
         <span>运维</span>
         <span>哈哈</span>
       </p>
-      <Button type="primary">点击</Button>
+      <Button type="primary">点击66</Button>
+      <img src={loginPic} className="img" alt="logo" />
+      <div className="bg-img"></div>
     </div>
   );
 };
