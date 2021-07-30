@@ -1,10 +1,11 @@
 const path = require('path');
-const ESLintPlugin = require('eslint-webpack-plugin');
+// const webpack = require('webpack');
+// const ESLintPlugin = require('eslint-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const rootDir = process.cwd();
 
 module.exports = {
-  entry: './src/main.js',
+  entry: './src/main.tsx',
   output: {
     filename: 'app.[contenthash].js',
     path: path.resolve(process.cwd(), 'dist'),
@@ -18,15 +19,14 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
+        test: /\.tsx?$/,
         include: path.resolve(rootDir, 'src'),
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader', // es6 转换成 es5  thread-loader//多线程打包
-          options: {
-            // presets: ["@babel/preset-env"],
-            presets: ['@babel/preset-react'],
-          },
+          // options: {
+          //   presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript'],
+          // },
         },
       },
       {
@@ -62,6 +62,10 @@ module.exports = {
       ],
     }),
     // 配置 eslint
-    new ESLintPlugin(),
+    // new ESLintPlugin(),
+    // 自动加载react模块 针对旧的转换 不用在顶部频繁引入 react
+    // new webpack.ProvidePlugin({
+    //   React: "react"
+    // })
   ],
 };

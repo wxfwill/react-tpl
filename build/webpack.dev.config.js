@@ -1,8 +1,9 @@
-// const path = require("path");
+const path = require('path');
 const HtmlWebapckPlugin = require('html-webpack-plugin');
 const WebpackBar = require('webpackbar');
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 const notifier = require('node-notifier');
+const rootDir = process.cwd();
 
 module.exports = {
   mode: 'development',

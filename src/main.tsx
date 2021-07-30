@@ -1,4 +1,3 @@
-import React from 'react';
 import ReactDom from 'react-dom';
 import { Button } from 'antd';
 
@@ -22,6 +21,7 @@ const App = () => {
       <Button type="primary">点击66</Button>
       <img src={loginPic} className="img" alt="logo" />
       <div className="bg-img"></div>
+      <span>66</span>
     </div>
   );
 };
