@@ -5,7 +5,7 @@
     "target": "esnext",
     "lib": ["esnext", "dom"],
     "sourceMap": true,
-    "baseUrl": "./",
+    "baseUrl": ".",
     "jsx": "react-jsx",
     "allowSyntheticDefaultImports": true,
     "moduleResolution": "node",
@@ -30,5 +30,5 @@
     ".stylelintrc.js",
     ".prettierrc.js"
   ],
-  "exclude": ["node_modules", "build", "dist"]
+  "exclude": ["node_modules", "build", "dist", "scripts", "src/.umi/*", "webpack"]
 }

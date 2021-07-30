@@ -8,7 +8,7 @@ import styles from './main.less';
 
 import loginPic from '@/assets/img/logo.png';
 
-const App = () => {
+const App = (): any => {
   return (
     <div className={styles.wrap}>
       <p className="test">

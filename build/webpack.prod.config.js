@@ -108,6 +108,8 @@ module.exports = {
       // 更改配置文件时，重新缓存
       config: [__filename],
     },
+    allowCollectingMemory: true,
+    profile: true,
   },
   plugins: [
     // new CleanWebpackPlugin(),
