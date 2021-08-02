@@ -5,12 +5,13 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserWebpackPlugin = require('terser-webpack-plugin');
 const WebpackBar = require('webpackbar');
+const webpack = require('webpack');
 
 module.exports = {
   mode: 'production',
   output: {
     clean: true, // 清除打包产物
-    publicPath: '/service-app/',
+    publicPath: '/dist/',
   },
   module: {
     rules: [
@@ -107,7 +108,7 @@ module.exports = {
     // 开启缓存, 将缓存类型设置为文件系统,默认是memory
     type: 'filesystem',
     // cacheDirectory 默认路径是 node_modules/.cache/webpack
-    cacheDirectory: path.resolve(__dirname, './temp_cache'), //本地目录
+    // cacheDirectory: path.resolve(__dirname, './temp_cache'), //本地目录
     buildDependencies: {
       // 更改配置文件时，重新缓存
       config: [__filename],
@@ -136,5 +137,9 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: 'css/[name]-[contenthash:6].css',
     }),
+    // 定义全局变量
+    new webpack.DefinePlugin({
+      'process.env.BASE_URL': JSON.stringify('/dist/'),
+    })
   ],
 };

@@ -5,7 +5,6 @@ const WebpackBar = require('webpackbar');
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 const notifier = require('node-notifier');
 const rootDir = process.cwd();
-console.log(process)
 
 module.exports = {
   mode: 'development',
@@ -107,7 +106,7 @@ module.exports = {
       },
     }),
     new webpack.DefinePlugin({
-      'process.env.BASE_URL': JSON.stringify('http://172.20.5.96:1024/'),
+      'process.env.BASE_URL': JSON.stringify('/'),
     })
   ],
 };

@@ -4,9 +4,10 @@ import { connect } from 'react-redux';
 import { saveToken } from '@/store/actions/userAction';
 
 const RouterFn = () => {
-  let token = 123;
+  let token: any = 123;
   return (
-    <BrowserRouter basename="/service-app/">
+    // basename="/service-app/"
+    <BrowserRouter basename="/dist/">
       <div className="app-wrap">
         <Switch>
           {routes.map((item) => {

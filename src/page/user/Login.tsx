@@ -2,7 +2,6 @@ import { withRouter } from 'react-router-dom';
 import { Button } from 'antd';
 
 const Login = (props: any) => {
-  console.log(props);
   let { history } = props;
   const handleTest = () => {
     history.push('/map/test');
