@@ -1,4 +1,5 @@
 // const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
@@ -9,6 +10,7 @@ module.exports = {
   mode: 'production',
   output: {
     clean: true, // 清除打包产物
+    publicPath: '/service-app/',
   },
   module: {
     rules: [
@@ -104,6 +106,8 @@ module.exports = {
   cache: {
     // 开启缓存, 将缓存类型设置为文件系统,默认是memory
     type: 'filesystem',
+    // cacheDirectory 默认路径是 node_modules/.cache/webpack
+    cacheDirectory: path.resolve(__dirname, './temp_cache'), //本地目录
     buildDependencies: {
       // 更改配置文件时，重新缓存
       config: [__filename],

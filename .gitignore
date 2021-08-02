@@ -3,6 +3,7 @@ node_modules
 /dist
 /cluePushWeb
 /logs
+temp_cache
 
 # local env files
 .env.local

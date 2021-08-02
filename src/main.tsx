@@ -1,28 +1,24 @@
 import ReactDom from 'react-dom';
-import { Button } from 'antd';
+import RouterFn from './router/index';
 
+// rem适配
 import 'amfe-flexible';
-// 样式
+// antd样式
 import 'antd/dist/antd.css';
-import styles from './main.less';
-
-import loginPic from '@/assets/img/logo.png';
+// redux
+import { Provider } from 'react-redux';
+import store from './store/index';
+// 持久化
+import { PersistGate } from 'redux-persist/lib/integration/react';
+import { persistor } from './store/index';
 
 const App = (): any => {
   return (
-    <div className={styles.wrap}>
-      <p className="test">
-        <span>测试6</span>
-        <span>前端</span>
-        <span>后端</span>
-        <span>运维</span>
-        <span>哈哈</span>
-      </p>
-      <Button type="primary">点击66</Button>
-      <img src={loginPic} className="img" alt="logo" />
-      <div className="bg-img"></div>
-      <span>66</span>
-    </div>
+    <PersistGate loading={null} persistor={persistor}>
+      <Provider store={store}>
+        <RouterFn />
+      </Provider>
+    </PersistGate>
   );
 };
 

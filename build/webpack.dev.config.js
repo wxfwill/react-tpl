@@ -1,18 +1,37 @@
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebapckPlugin = require('html-webpack-plugin');
 const WebpackBar = require('webpackbar');
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 const notifier = require('node-notifier');
 const rootDir = process.cwd();
+console.log(process)
 
 module.exports = {
   mode: 'development',
+  output: {
+    publicPath: '/',
+  },
   devtool: 'eval-cheap-module-source-map',
   devServer: {
     // contentBase: path.join(__dirname, "./public"), // 静态资源的跟目录，即不受webpack控制的资源文件，放这里
     hot: true,
     open: true,
     port: 1024,
+    // historyApiFallback: true,
+    historyApiFallback: {
+      rewrites: [
+          { from: /.*/, to: path.posix.join('/', 'index.html') },
+      ],
+    },
+    proxy: {
+      '/api/*': {
+        target: 'http://172.16.121.137:8030/',
+        changeOrigin: true,
+        secure: true,
+        pathRewrite: {'^/api': ''}
+      },
+    },
   },
   module: {
     rules: [
@@ -87,5 +106,8 @@ module.exports = {
         });
       },
     }),
+    new webpack.DefinePlugin({
+      'process.env.BASE_URL': JSON.stringify('http://172.20.5.96:1024/'),
+    })
   ],
 };
