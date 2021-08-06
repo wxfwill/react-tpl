@@ -28,7 +28,8 @@
     "config/**/*",
     ".eslintrc.js",
     ".stylelintrc.js",
-    ".prettierrc.js"
+    ".prettierrc.js",
+    "./webpack.config.js"
   ],
-  "exclude": ["node_modules", "build", "dist", "scripts", "src/.umi/*", "webpack"]
+  "exclude": ["node_modules", "build", "dist"]
 }
